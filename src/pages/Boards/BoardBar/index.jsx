@@ -15,18 +15,15 @@ const BOARD_STYLE = {
   borderRadius: "5px",
   backgroundColor: 'transparent',
   px: "5px",
-  color: "primary.main",
-  '& .MuiSvgIcon-root': {
-    color: "primary.main"
-  },
-  '&:hover': {
-    bgcolor: "primary.50"
-  }
+  color: "white",
+  '.MuiSvgIcon-root': { color: "white" },
+  '&:hover': { bgcolor: "primary.50" }
 }
 
 function BoardBar() {
   return (
     <Box sx={{
+      bgcolor: (theme) => (theme.palette.mode === 'light' ? "#9b59b6" : "#34495e"),
       width: '100%',
       height: (theme) => theme.trello.boardBarHeight,
       display: 'flex',
@@ -35,7 +32,7 @@ function BoardBar() {
       gap: 2,
       px: 2,
       overflowX: 'auto',
-      borderTop: '1px solid #ccc'
+      borderBottom: '1px solid white'
     }}>
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
         <Chip
@@ -79,16 +76,24 @@ function BoardBar() {
         />
       </Box>
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-        <Button variant="outlined"
+        <Button
+          sx={{
+            color: 'white',
+            borderColor: 'white',
+            '&:hover': { borderColor: 'white' }
+          }}
+         variant="outlined"
           startIcon={<PersonAddIcon />}>
         Invite
         </Button>
         <AvatarGroup max={4}
           sx={{
+            gap: 0.85,
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,
-              fontSize: '0.85rem'
+              fontSize: '0.85rem',
+              border: 'none'
             }
           }}>
           <Tooltip title="Tran Huy (huybe)">
